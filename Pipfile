@@ -11,6 +11,10 @@ numpy = "*"
 
 [dev-packages]
 pytest = "*"
+wheel = "*"
+twine = "*"
+keyring = "*"
+check-manifest = "*"
 
 [requires]
 python_version = "3.7"

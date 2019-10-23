@@ -29,8 +29,8 @@ class Transformer:
     def transform(self, job):
         if self._no_transform:
             return job
-        job['tasks'] = [ self._apply(l.strip(), self._transformers['tasks']) for l in job['tasks'] ]
-        job['instances'] = [ self._apply(l.strip(), self._transformers['instances']) for l in job['instances'] ]
+        job['tasks'] = [ self._apply(l, self._transformers['tasks']) for l in job['tasks'] ]
+        job['instances'] = [ self._apply(l, self._transformers['instances']) for l in job['instances'] ]
         return job
 
     def _apply(self, line, transformers):

@@ -1,3 +1,5 @@
 include LICENSE
 include Makefile
 include Pipfile
+include spar/data/samples/*.csv
+include spar/data/distributions/*.pkl

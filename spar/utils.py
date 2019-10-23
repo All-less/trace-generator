@@ -8,7 +8,7 @@ from collections import defaultdict
 import numpy as np
 
 
-DATA_DIR = Path(__file__).resolve().parents[0] / 'data'
+DATA_DIR = Path(__file__).resolve().parents[0] / 'data' / 'distributions'
 DIST_CACHE = {}
 SAMPLE_CACHE = defaultdict(list)
 

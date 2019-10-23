@@ -12,9 +12,9 @@ from .transform import Transformer
 
 
 @click.command()
-@click.option('--trace-dir', type=click.Path(exists=True),
+@click.option('--trace-dir', type=click.Path(exists=True), default=(Path(__file__).parents[0] / 'data' / 'samples'),
               help='The location of Alibaba trace.')
-@click.option('--output-dir', type=click.Path(), prompt=True,
+@click.option('--output-dir', type=click.Path(exists=True), prompt=True,
               help='The directory for generated trace.')
 @click.option('--load-factor', type=float, default=1,
               help='A factor adjusting the average load of the output trace.')

@@ -4,9 +4,9 @@
 def write_job(arrival, job, task_file, instance_file):
     write_job.called += 1
     for line in job['tasks']:
-        task_file.write(f'{arrival},j_{write_job.called},{line}\n')
+        task_file.write(f'{arrival},j_{write_job.called},{line.strip()}\n')
     for line in job['instances']:
-        instance_file.write(f'{arrival},j_{write_job.called},{line}\n')
+        instance_file.write(f'{arrival},j_{write_job.called},{line.strip()}\n')
 
 # We assign a counter to `write_job` function and it will be
 # used for generating `job_id`.
