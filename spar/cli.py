@@ -12,10 +12,9 @@ from .transform import Transformer
 
 
 @click.command()
+@click.argument('output-dir', type=click.Path(exists=True))
 @click.option('--trace-dir', type=click.Path(exists=True), default=(Path(__file__).parents[0] / 'data' / 'samples'),
               help='The location of Alibaba trace.')
-@click.option('--output-dir', type=click.Path(exists=True), prompt=True,
-              help='The directory for generated trace.')
 @click.option('--load-factor', type=float, default=1,
               help='A factor adjusting the average load (i.e., # jobs/hour) of the output trace.')
 @click.option('--duration', type=click.FloatRange(0, None), default=1,
@@ -27,8 +26,9 @@ from .transform import Transformer
 def main(trace_dir, output_dir, load_factor, heter_factor, machine_conf, duration):
     '''
     \b
-    By default, we output an hour-long trace from the original Alibaba trace. But you
-    could provide several parameters and we would transform the trace as follows.
+    By default, we output an hour-long trace from the original Alibaba
+    trace to the OUTPUT_DIR. But you could provide several parameters
+    and we would transform the trace as follows.
     1. Up- or down-sample trace according to load-factor. For up-sampling,
     we replace the dependencies with synthesized ones.
     2. Adjust resource heterogeneity according to heter-factor.
@@ -49,7 +49,8 @@ def main(trace_dir, output_dir, load_factor, heter_factor, machine_conf, duratio
     $ spar --output-dir <output_path> --duration 0.5
 
     \b
-    Generate an hour-long trace with the resource request and usage deviating from the average 1.5x the original.
+    Generate an hour-long trace with the resource request and usage deviating
+    from the average 1.5x the original.
     $ spar --output-dir <output_path> --heter-factor 1.5
 
     \b
