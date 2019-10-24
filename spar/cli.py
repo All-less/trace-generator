@@ -17,7 +17,7 @@ from .transform import Transformer
 @click.option('--output-dir', type=click.Path(exists=True), prompt=True,
               help='The directory for generated trace.')
 @click.option('--load-factor', type=float, default=1,
-              help='A factor adjusting the average load of the output trace.')
+              help='A factor adjusting the average load (i.e., # jobs/hour) of the output trace.')
 @click.option('--duration', type=click.FloatRange(0, None), default=1,
               help='The duration (in hours) of the trace.')
 @click.option('--heter-factor', type=float, default=1,
@@ -26,11 +26,35 @@ from .transform import Transformer
               help='An integer pair indicating the (CPU, memory) of each server. Default: (96, 100) as in Alibaba cluster.')
 def main(trace_dir, output_dir, load_factor, heter_factor, machine_conf, duration):
     '''
-    1. Up- or down-sample trace according to load_factor. Meanwhile, adjust
-       job size according to cluster_scale. For up-sampling, we replace the
-       dependencies with synthesized ones.
-    2. Adjust resource heterogeneity according to heter_factor.
-    3. Rescale resource usage according to machine_conf.
+    \b
+    By default, we output an hour-long trace from the original Alibaba trace. But you
+    could provide several parameters and we would transform the trace as follows.
+    1. Up- or down-sample trace according to load-factor. For up-sampling,
+    we replace the dependencies with synthesized ones.
+    2. Adjust resource heterogeneity according to heter-factor.
+    3. Rescale resource request and usage according to machine-conf.
+
+    Examples:
+
+    \b
+    Generate an hour-long trace.
+    $ spar --output-dir <output_path>
+
+    \b
+    Generate an hour-long trace with 2x jobs.
+    $ spar --output-dir <output_path> --load-factor 2
+
+    \b
+    Generate a half-hour-long trace.
+    $ spar --output-dir <output_path> --duration 0.5
+
+    \b
+    Generate an hour-long trace with the resource request and usage deviating from the average 1.5x the original.
+    $ spar --output-dir <output_path> --heter-factor 1.5
+
+    \b
+    Generate an hour-long trace for clusters with 24 cores and 50 unit of memory.
+    $ spar --output-dir <output_path> --machine-conf (24, 50)
     '''
     with (Path(trace_dir) / 'sample_tasks.csv').open() as sample_task, \
          (Path(trace_dir) / 'sample_instances.csv').open() as sample_instance, \
