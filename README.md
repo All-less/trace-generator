@@ -60,6 +60,7 @@ Options:
   --help                          Show this message and exit.
 ```
 
+Please refer to our wiki for the [detailed format of input and output](https://github.com/All-less/trace-generator/wiki/Trace-Format).
 
 ### Publication
 
