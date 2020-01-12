@@ -30,20 +30,20 @@ Usage: spar [OPTIONS] OUTPUT_DIR
   Examples:
 
   Generate an hour-long trace.
-  $ spar --output-dir <output_path>
+  $ spar <OUTPUT_DIR>
 
   Generate an hour-long trace with 2x jobs.
-  $ spar --output-dir <output_path> --load-factor 2
+  $ spar <OUTPUT_DIR> --load-factor 2
 
   Generate a half-hour-long trace.
-  $ spar --output-dir <output_path> --duration 0.5
+  $ spar <OUTPUT_DIR> --duration 0.5
 
   Generate an hour-long trace with the resource request and usage deviating
   from the average 1.5x the original.
-  $ spar --output-dir <output_path> --heter-factor 1.5
+  $ spar <OUTPUT_DIR> --heter-factor 1.5
 
   Generate an hour-long trace for clusters with 24 cores and 50 unit of memory.
-  $ spar --output-dir <output_path> --machine-conf (24, 50)
+  $ spar <OUTPUT_DIR> --machine-conf (24, 50)
 
 Options:
   --trace-dir PATH                The location of Alibaba trace.

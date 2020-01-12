@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'spar',
     packages = find_packages(exclude=('config')),
-    version = '0.0.5',
+    version = '0.0.6',
     description = 'A CLI tool for generating controllable cluster trace.',
     author = 'All-less',
     author_email = 'all.less.mail@gmail.com',
