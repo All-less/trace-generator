@@ -36,5 +36,5 @@ def iter_job(task_file, instance_file):
     while next_task[JOB_ID] != '':
         arrive_at, task_lines, instance_lines = next_task[ARR_TIME], [ next_task[REST] ], [ next_instance[REST] ]
         next_task = read_lines(task_file, next_task[JOB_ID], task_lines)
-        next_instance = read_lines(instance_file, next_task[JOB_ID], instance_lines)
+        next_instance = read_lines(instance_file, next_instance[JOB_ID], instance_lines)
         yield float(arrive_at), { 'tasks': task_lines, 'instances': instance_lines }
