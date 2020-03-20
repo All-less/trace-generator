@@ -66,7 +66,7 @@ Please refer to our wiki for the [detailed format of input and output](https://g
 
 For more details, please refer to the following paper.
 
-> Tian, Huangshi, Minchen Yu, and Wei Wang. "Characterizing and Synthesizing Task Dependencies of Data-Parallel Jobs in Alibaba Cloud." In SoCC. 2019.
+> Tian, Huangshi, Yunchuan Zheng, and Wei Wang. "Characterizing and Synthesizing Task Dependencies of Data-Parallel Jobs in Alibaba Cloud." In SoCC. 2019.
 
 
 ### Contributing
@@ -76,4 +76,4 @@ Any form of contribution is welcome! If you find a bug, create an issue; if you 
 
 ### Acknowledgement
 
-@SimonZYC has significantly contributed to this project.
+[@SimonZYC](https://github.com/SimonZYC) has significantly contributed to this project.
