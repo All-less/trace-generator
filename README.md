@@ -72,3 +72,8 @@ For more details, please refer to the following paper.
 ### Contributing
 
 Any form of contribution is welcome! If you find a bug, create an issue; if you extend a feature, send a pull request.
+
+
+### Acknowledgement
+
+@SimonZYC has significantly contributed to this project.
