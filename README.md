@@ -13,6 +13,7 @@ It is recommended to install the tool with `pip3`.
 pip3 install spar
 ```
 
+Caution: The tool might not work with newer versions of `Python`(3.8+) and `scipy`(1.8+).
 
 ### Usage
 
