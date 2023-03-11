@@ -6,18 +6,26 @@ from pathlib import Path
 from collections import defaultdict
 
 import numpy as np
-
+from scipy.stats import rv_histogram
 
 DATA_DIR = Path(__file__).resolve().parents[0] / 'data' / 'distributions'
 DIST_CACHE = {}
 SAMPLE_CACHE = defaultdict(list)
 
 
-def draw(dist_name, num=1, path=[], output_integer=True):
+def draw(dist_name, num=1, path=tuple(), output_integer=True, from_hist=True):
     """Draw random samples from a given distribution."""
     if dist_name not in DIST_CACHE:
-        with (DATA_DIR / dist_name).open('rb') as f:
-            DIST_CACHE[dist_name] = pickle.load(f)
+        if from_hist:
+            with (DATA_DIR / dist_name.replace('dist', 'hist')).open('rb') as f:
+                hist = pickle.load(f)
+                if isinstance(hist, dict):
+                    DIST_CACHE[dist_name] = {k: rv_histogram(histogram=v, density=False) for k, v in hist.items()}
+                else:
+                    DIST_CACHE[dist_name] = rv_histogram(histogram=hist, density=False)
+        else:
+            with (DATA_DIR / dist_name).open('rb') as f:
+                DIST_CACHE[dist_name] = pickle.load(f)
 
     dist = DIST_CACHE[dist_name]
     for p in path:
